@@ -84,6 +84,8 @@ export default function Acu(props) {
 
   const [voos, setVoos] = useState([]);
 
+  const [ultimo, setUltimo] = useState([]);
+
   const hoje = moment().format("DD/MM/YYYY");
   const amanha = moment()
     .add(+1, "Day")
@@ -139,6 +141,7 @@ export default function Acu(props) {
         "https://api.migueldias.net/buzios/details/acu"
       );
       setPosicao(resp.data[0].posicao);
+      setUltimo(resp.data[0].atualizacao);
     };
     posicao();
 
@@ -194,17 +197,36 @@ export default function Acu(props) {
 
     const tempoVoo = (distanciaInt / 230) * 60;
 
+    const tempoNav = distanciaInt / 18;
+
     const tempoVooEditado = parseInt(tempoVoo) + "m";
 
-    return `${distanciaInt}km / ${tempoVooEditado}`;
+    // return `${distanciaInt}km / ${tempoVooEditado}`;
+    return (
+      <div>
+        {distanciaInt}km <i className="fas fa-helicopter"></i> {tempoVooEditado}{" "}
+        <i className="fas fa-ship"></i> {parseInt(tempoNav)}h
+      </div>
+    );
   };
+
+  const lastUpdate = () => {
+    var b = moment([
+      ultimo.slice(0, 4),
+      ultimo.slice(5, 7) - 1,
+      ultimo.slice(8, 10)
+    ]);
+    var a = moment([hoje.slice(6, 10), hoje.slice(3, 5) - 1, hoje.slice(0, 2)]);
+    return a.diff(b, "days");
+  };
+
   return (
     <div>
       <ThemeProvider theme={theme}>
         <div className={classes.section1}>
           <Grid container alignItems="center">
-            <Grid item xs>
-              <Typography gutterBottom variant="h4">
+            <Grid item xs={12}>
+              <Typography variant="h4">
                 SKANDI <strong>AÇU</strong>
               </Typography>
             </Grid>
@@ -220,9 +242,20 @@ export default function Acu(props) {
                   : posicao}
               </Typography>
             </Grid>
-          </Grid>
-          <Grid container alignItems="center">
             <Grid item>
+              <i
+                className="fas fa-sync"
+                style={{ marginBottom: 7, color: "red", marginLeft: 10 }}
+              ></i>{" "}
+              <strong>
+                {lastUpdate() === 0 && "Hoje"}
+                {lastUpdate() === 1 && lastUpdate() + " Dia"}
+                {lastUpdate() > 1 && lastUpdate() + " Dias"}
+              </strong>
+            </Grid>
+          </Grid>
+          <Grid container direction="row" alignItems="center">
+            <Grid item xs={6}>
               <Chip
                 avatar={<Avatar>RJ</Avatar>}
                 label={distancia(-22.9, -43.19)}
@@ -233,7 +266,7 @@ export default function Acu(props) {
                 style={{ marginBottom: 10 }}
               />
             </Grid>
-            <Grid item>
+            <Grid item xs={6}>
               <Chip
                 avatar={<Avatar>CF</Avatar>}
                 label={distancia(-22.88, -42.02)}
@@ -241,10 +274,10 @@ export default function Acu(props) {
                 color="secondary"
                 variant="outlined"
                 size="small"
-                style={{ marginBottom: 10, marginLeft: 5 }}
+                style={{ marginBottom: 10 }}
               />
             </Grid>{" "}
-            <Grid item>
+            <Grid item xs={6}>
               <Chip
                 avatar={
                   <Avatar
@@ -259,7 +292,7 @@ export default function Acu(props) {
                 style={{ marginBottom: 10, color: "#d500f9" }}
               />
             </Grid>
-            <Grid item>
+            <Grid item xs={6}>
               <Chip
                 avatar={
                   <Avatar
@@ -271,7 +304,7 @@ export default function Acu(props) {
                 label={distancia(-20.32, -40.33)}
                 variant="outlined"
                 size="small"
-                style={{ marginBottom: 10, color: "#009688", marginLeft: 5 }}
+                style={{ marginBottom: 10, color: "#009688" }}
               />
             </Grid>
           </Grid>

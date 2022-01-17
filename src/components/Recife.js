@@ -25,7 +25,7 @@ import Chart from "./Chart";
 import PlaceIcon from "@material-ui/icons/Place";
 import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
-import FlightIcon from "@material-ui/icons/Flight";
+// import FlightIcon from "@material-ui/icons/Flight";
 
 const theme = createMuiTheme({
   palette: {
@@ -81,8 +81,6 @@ export default function Olinda(props) {
   const [perCincoDias, setPerCincoDias] = useState([]);
 
   const [posicao, setPosicao] = useState([]);
-
-  const [voos, setVoos] = useState([]);
 
   const [ultimo, setUltimo] = useState([]);
 
@@ -144,22 +142,6 @@ export default function Olinda(props) {
       setUltimo(resp.data[0].atualizacao);
     };
     posicao();
-
-    const voos = async () => {
-      // Make a request for a user with a given ID
-      axios
-        .get("https://api.migueldias.net/buzios/voosrecife")
-        .then(function(response) {
-          // handle success
-          setVoos(response.data.filter(i => i.data === hoje));
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        });
-    };
-
-    voos();
 
     // eslint-disable-next-line
   }, []);
@@ -308,13 +290,6 @@ export default function Olinda(props) {
               />
             </Grid>
           </Grid>
-          <Typography
-            color="textSecondary"
-            variant="body2"
-            style={{ marginTop: 5 }}
-          >
-            Condições Meteorológicas.
-          </Typography>
         </div>
         <Grid container>
           <Grid item>
@@ -331,7 +306,7 @@ export default function Olinda(props) {
         </Grid>
         <Divider variant="middle" />
 
-        <div className={classes.section3}>
+        {/* <div className={classes.section3}>
           <Grid container alignItems="center">
             {voos.map(i => (
               <Grid item key={i.id}>
@@ -344,7 +319,7 @@ export default function Olinda(props) {
               </Grid>
             ))}
           </Grid>
-        </div>
+        </div> */}
 
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">

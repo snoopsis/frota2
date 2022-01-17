@@ -25,7 +25,7 @@ import Chart from "./Chart";
 import PlaceIcon from "@material-ui/icons/Place";
 import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
-import FlightIcon from "@material-ui/icons/Flight";
+// import FlightIcon from "@material-ui/icons/Flight";
 
 const theme = createMuiTheme({
   palette: {
@@ -92,7 +92,7 @@ export default function Olinda(props) {
   const [perQuatroDias, setPerQuatroDias] = useState([]);
   const [perCincoDias, setPerCincoDias] = useState([]);
 
-  const [voos, setVoos] = useState([]);
+  // const [voos, setVoos] = useState([]);
 
   const [posicao, setPosicao] = useState([]);
 
@@ -155,21 +155,21 @@ export default function Olinda(props) {
     };
     posicao();
 
-    const voos = async () => {
-      // Make a request for a user with a given ID
-      axios
-        .get("https://api.migueldias.net/buzios/voos")
-        .then(function(response) {
-          // handle success
-          setVoos(response.data.filter(i => i.data === hoje));
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        });
-    };
+    // const voos = async () => {
+    //   // Make a request for a user with a given ID
+    //   axios
+    //     .get("https://api.migueldias.net/buzios/voos")
+    //     .then(function(response) {
+    //       // handle success
+    //       setVoos(response.data.filter(i => i.data === hoje));
+    //     })
+    //     .catch(function(error) {
+    //       // handle error
+    //       console.log(error);
+    //     });
+    // };
 
-    voos();
+    // voos();
 
     // eslint-disable-next-line
   }, []);
@@ -324,13 +324,6 @@ export default function Olinda(props) {
             </Grid>
           </Grid>
 
-          <Typography
-            color="textSecondary"
-            variant="body2"
-            style={{ marginTop: 5 }}
-          >
-            Condições Meteorológicas.
-          </Typography>
           <Button
             color="primary"
             startIcon={<ArrowBackIcon />}
@@ -343,7 +336,7 @@ export default function Olinda(props) {
         </div>
         <Divider variant="middle" />
 
-        <div className={classes.section3}>
+        {/* <div className={classes.section3}>
           {voos.map(i => (
             <Grid container alignItems="center">
               <Grid item>
@@ -356,7 +349,7 @@ export default function Olinda(props) {
               </Grid>
             </Grid>
           ))}
-        </div>
+        </div> */}
 
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">

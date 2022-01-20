@@ -64,7 +64,9 @@ const Home = props => {
         .get("https://api.migueldias.net/buzios/voosolinda")
         .then(function(response) {
           // handle success
-          setOlinda(response.data.filter(i => i.data === props.hoje));
+          setOlinda(
+            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+          );
         })
         .catch(function(error) {
           // handle error
@@ -80,7 +82,9 @@ const Home = props => {
         .get("https://api.migueldias.net/buzios/voosrecife")
         .then(function(response) {
           // handle success
-          setRecife(response.data.filter(i => i.data === props.hoje));
+          setRecife(
+            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+          );
         })
         .catch(function(error) {
           // handle error
@@ -96,7 +100,9 @@ const Home = props => {
         .get("https://api.migueldias.net/buzios/voosacu")
         .then(function(response) {
           // handle success
-          setAcu(response.data.filter(i => i.data === props.hoje));
+          setAcu(
+            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+          );
         })
         .catch(function(error) {
           // handle error
@@ -112,7 +118,9 @@ const Home = props => {
         .get("https://api.migueldias.net/buzios/voos")
         .then(function(response) {
           // handle success
-          setBuzios(response.data.filter(i => i.data === props.hoje));
+          setBuzios(
+            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+          );
         })
         .catch(function(error) {
           // handle error
@@ -194,7 +202,8 @@ const Home = props => {
                       <Grid
                         container
                         style={{
-                          marginBottom: 5
+                          marginBottom: 10,
+                          marginLeft: "1ch"
                         }}
                       >
                         <Grid item>
@@ -222,10 +231,15 @@ const Home = props => {
                               fontSize: "10px"
                             }}
                           >
-                            {i.procedencia}
+                            {i.procedencia === "Jacarepagua / SKOL" &&
+                              "Jacarepagua"}
+                            {i.procedencia === "Macae / SKOL" && "Macae"}
+                            {i.procedencia === "Cabo Frio / SKOL" &&
+                              "Cabo Frio"}
+                            {i.procedencia === "Vitoria / SKOL" && "Vitoria"}
                           </Typography>
                         </Grid>
-                        <Grid item>
+                        {/* <Grid item>
                           <Typography
                             variant="subtitle2"
                             component="h1"
@@ -236,7 +250,7 @@ const Home = props => {
                           >
                             {i.data.slice(0, 5)}
                           </Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                           <Typography
                             variant="subtitle2"
@@ -350,7 +364,8 @@ const Home = props => {
                         container
                         style={{
                           marginTop: 2,
-                          marginBottom: 3
+                          marginBottom: 10,
+                          marginLeft: "1ch"
                         }}
                       >
                         <Grid item>
@@ -378,10 +393,15 @@ const Home = props => {
                               fontSize: "10px"
                             }}
                           >
-                            {i.procedencia}
+                            {i.procedencia === "Jacarepagua / SKRE" &&
+                              "Jacarepagua"}
+                            {i.procedencia === "Macae / SKRE" && "Macae"}
+                            {i.procedencia === "Cabo Frio / SKRE" &&
+                              "Cabo Frio"}
+                            {i.procedencia === "Vitoria / SKRE" && "Vitoria"}
                           </Typography>
                         </Grid>
-                        <Grid item>
+                        {/* <Grid item>
                           <Typography
                             variant="subtitle2"
                             component="h1"
@@ -392,7 +412,7 @@ const Home = props => {
                           >
                             {i.data.slice(0, 5)}
                           </Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                           <Typography
                             variant="subtitle2"
@@ -506,7 +526,8 @@ const Home = props => {
                         container
                         style={{
                           marginTop: 2,
-                          marginBottom: 3
+                          marginBottom: 10,
+                          marginLeft: "1ch"
                         }}
                       >
                         <Grid item>
@@ -532,10 +553,15 @@ const Home = props => {
                               fontSize: "10px"
                             }}
                           >
-                            {i.procedencia}
+                            {i.procedencia === "Jacarepagua / SKAU" &&
+                              "Jacarepagua"}
+                            {i.procedencia === "Macae / SKAU" && "Macae"}
+                            {i.procedencia === "Cabo Frio / SKAU" &&
+                              "Cabo Frio"}
+                            {i.procedencia === "Vitoria / SKAU" && "Vitoria"}
                           </Typography>
                         </Grid>
-                        <Grid item>
+                        {/* <Grid item>
                           <Typography
                             variant="subtitle2"
                             component="h1"
@@ -546,7 +572,7 @@ const Home = props => {
                           >
                             {i.data.slice(0, 5)}
                           </Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                           <Typography
                             variant="subtitle2"
@@ -660,7 +686,8 @@ const Home = props => {
                         container
                         style={{
                           marginTop: 2,
-                          marginBottom: 3
+                          marginBottom: 10,
+                          marginLeft: "1ch"
                         }}
                       >
                         <Grid item>
@@ -688,10 +715,15 @@ const Home = props => {
                               fontSize: "10px"
                             }}
                           >
-                            {i.procedencia}
+                            {i.procedencia === "Jacarepagua / SKBU" &&
+                              "Jacarepagua"}
+                            {i.procedencia === "Macae / SKBU" && "Macae"}
+                            {i.procedencia === "Cabo Frio / SKBU" &&
+                              "Cabo Frio"}
+                            {i.procedencia === "Vitoria / SKBU" && "Vitoria"}
                           </Typography>
                         </Grid>
-                        <Grid item>
+                        {/* <Grid item>
                           <Typography
                             variant="subtitle2"
                             component="h1"
@@ -702,7 +734,7 @@ const Home = props => {
                           >
                             {i.data.slice(0, 5)}
                           </Typography>
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                           <Typography
                             variant="subtitle2"

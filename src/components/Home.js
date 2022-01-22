@@ -65,7 +65,9 @@ const Home = props => {
         .then(function(response) {
           // handle success
           setOlinda(
-            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+            response.data.filter(
+              i => i.data === hoje && i.saida_aero.length < 2
+            )
           );
         })
         .catch(function(error) {
@@ -83,7 +85,9 @@ const Home = props => {
         .then(function(response) {
           // handle success
           setRecife(
-            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+            response.data.filter(
+              i => i.data === hoje && i.saida_aero.length < 2
+            )
           );
         })
         .catch(function(error) {
@@ -101,7 +105,9 @@ const Home = props => {
         .then(function(response) {
           // handle success
           setAcu(
-            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+            response.data.filter(
+              i => i.data === hoje && i.saida_aero.length < 2
+            )
           );
         })
         .catch(function(error) {
@@ -119,7 +125,9 @@ const Home = props => {
         .then(function(response) {
           // handle success
           setBuzios(
-            response.data.filter(i => i.data === hoje && i.saida_aero === "")
+            response.data.filter(
+              i => i.data === hoje && i.saida_aero.length < 2
+            )
           );
         })
         .catch(function(error) {

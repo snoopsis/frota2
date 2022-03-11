@@ -245,6 +245,7 @@ const Home = props => {
                             {i.procedencia === "Cabo Frio / SKOL" &&
                               "Cabo Frio"}
                             {i.procedencia === "Vitoria / SKOL" && "Vitoria"}
+                            {i.procedencia === "Marica / SKOL" && "Marica"}
                           </Typography>
                         </Grid>
                         {/* <Grid item>
@@ -407,6 +408,7 @@ const Home = props => {
                             {i.procedencia === "Cabo Frio / SKRE" &&
                               "Cabo Frio"}
                             {i.procedencia === "Vitoria / SKRE" && "Vitoria"}
+                            {i.procedencia === "Marica / SKRE" && "Marica"}
                           </Typography>
                         </Grid>
                         {/* <Grid item>
@@ -567,6 +569,7 @@ const Home = props => {
                             {i.procedencia === "Cabo Frio / SKAU" &&
                               "Cabo Frio"}
                             {i.procedencia === "Vitoria / SKAU" && "Vitoria"}
+                            {i.procedencia === "Marica / SKAU" && "Marica"}
                           </Typography>
                         </Grid>
                         {/* <Grid item>
@@ -729,6 +732,7 @@ const Home = props => {
                             {i.procedencia === "Cabo Frio / SKBU" &&
                               "Cabo Frio"}
                             {i.procedencia === "Vitoria / SKBU" && "Vitoria"}
+                            {i.procedencia === "Marica / SKBU" && "Marica"}
                           </Typography>
                         </Grid>
                         {/* <Grid item>
